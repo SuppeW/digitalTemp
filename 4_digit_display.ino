@@ -21,11 +21,11 @@ void setup() {
 void loop() {
   int chk = DHT.read11(dht_pin);
   int temp = DHT.temperature;
-  String tempString = String(temp);
-  String tempC = String("1" + tempString + "C");
-  sevseg.setChars(tempC);
-  sevseg.setChars("124C");
+  if (temp > -1){
+    String tempString = String(temp);
+    String tempC = String("1" + tempString + "C");
+    sevseg.setChars(tempC.c_str());
+    Serial.println(tempC);
+  }
   sevseg.refreshDisplay();
-  Serial.println(tempC);
-  delay(1500);
 }
