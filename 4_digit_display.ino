@@ -1,6 +1,9 @@
 #include <dht.h>
 #include "SevSeg.h";
 
+
+//sevseg er biblioteket til en 4 digit display. Det jeg ikke skjønner er hvorfor linje 26 ikke funker når linje 27 gjør det..
+
 dht DHT;
 SevSeg sevseg;
 
@@ -20,7 +23,8 @@ void loop() {
   int temp = DHT.temperature;
   String tempString = String(temp);
   String tempC = String("1" + tempString + "C");
-  sevseg.setChars(char str[tempC]);
+  sevseg.setChars(tempC);
+  sevseg.setChars("124C");
   sevseg.refreshDisplay();
   Serial.println(tempC);
   delay(1500);
